@@ -1,6 +1,6 @@
 const Sentry = require("@sentry/node");
 const { ProfilingIntegration } = require("@sentry/profiling-node");
-
+const cors = require('cors');
 const express = require('express')
 require('dotenv').config(); 
 require('./db/mongoose')
@@ -12,6 +12,7 @@ const orderRouter = require('./routers/order')
 const foodRouter = require('./routers/food')
 
 const app = express()
+app.use(cors())
 const port = process.env.PORT || 3000
 Sentry.init({
     dsn: "https://580213991bc57d6be452cb00cec742d1@o4506841703972864.ingest.sentry.io/4506841706856448",
