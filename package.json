@@ -26,7 +26,7 @@
   },
   "scripts": {
     "test": "node src/test/test.js",
-    "start": "node src/index.js && npm run sentry:sourcemaps && npm run sentry:sourcemaps && npm run sentry:sourcemaps",
+    "start": "node src/index.js && npm run sentry:sourcemaps",
     "sentry:sourcemaps": "sentry-cli sourcemaps inject --org pesto-ma --project node-express ./out && sentry-cli sourcemaps upload --org pesto-ma --project node-express ./out"
   },
   "eslintConfig": {
