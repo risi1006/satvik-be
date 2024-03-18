@@ -3,7 +3,7 @@ const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const Order = require('./order.js')
-
+require('dotenv').config(); 
 // Schema for user
 const userSchema = new mongoose.Schema({
     name: {
@@ -52,6 +52,7 @@ userSchema.virtual('orders', {
 
 // Web token generator method
 userSchema.methods.generateWebToken = async function() {
+    console.log('risi - dotenv', process.env, process.env.MY_SECRET)
     const user = this;
     const token = jwt.sign({exp: Math.floor(Date.now() / 1000) + (60 * 60), data:{ _id: user._id.toString()} }, process.env.MY_SECRET);
 
